@@ -26,7 +26,8 @@ public class ManagerEmpleado {
 	
 	public Empleado buscarPorLegajo(String legajo) {
 	      for (Empleado e : listaEmpleados) {
-	          if (e.getLegajo().equals(legajo)) return e;
+	          if (e.getLegajo().equals(legajo)) 
+	        	 return e;
 	      }
 	  return null;
 	}
