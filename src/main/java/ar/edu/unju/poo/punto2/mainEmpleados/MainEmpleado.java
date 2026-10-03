@@ -15,23 +15,25 @@ public class MainEmpleado {
 
 	        // 1. Inicializar con empleados (Antigüedad simulada con fechas pasadas)
 	        Administrativo emp1 = new Administrativo("AB01", "35111222", "Carlos Jose Gómez", LocalDate.of(2020, 5, 10), 2);
-	        Profesional emp2 = new Profesional("OP01", "32444555", "Analia Rodríguez", LocalDate.of(2018, 3, 15), 1);
-	        Profesional emp4 = new Profesional("OP04", "33488566", "Camilo Mamani", LocalDate.of(2026, 2, 10), 1);
+	        
+	        Profesional emp2 = new Profesional("OP01", "32444555", "Analia Rodríguez", LocalDate.of(2018, 3, 15), 3);
+	        Profesional emp4 = new Profesional("OP04", "33488566", "Camilo Mamani", LocalDate.of(2019, 2, 10), 1);
+	        
 	        Limpieza emp3 = new Limpieza("LM01", "40888999", "Mariano Luis López", LocalDate.of(2022, 1, 20), 0);
 
-	        emp2.agregarTitulo(new Titulo("Universitario", "Ingeniería en Informática", 2015));
-	        emp2.agregarTitulo(new Titulo("Universitario", "Magister en Software", 2017));
+	        emp2.agregarTitulo(new Titulo("Ingeniería en Informática", "Universitario", 2015));
+	        emp2.agregarTitulo(new Titulo("Magister en Software", "Universitario", 2017));
 	        
-	        emp4.agregarTitulo(new Titulo("Terciario", "Analista Programador Universitario", 2023));
-	        emp4.agregarTitulo(new Titulo("Universitario", "Licenciatura en Sistema", 2025));
+	        emp4.agregarTitulo(new Titulo("Analista Programador Universitario", "Terciario", 2016));
+	        emp4.agregarTitulo(new Titulo("Licenciatura en Sistema", "Universitario", 2018));
 
 	        manager.agregarEmpleado(emp1);
 	        manager.agregarEmpleado(emp2);
 	        manager.agregarEmpleado(emp3);
+	        manager.agregarEmpleado(emp4);
 	        
 	        // 2. Probar búsquedas e impresiones de Sueldo Neto
 	        Empleado buscado = manager.buscarPorLegajo("OP01");
-	        
 	        if (buscado != null) {
 	            System.out.println("--- DATOS DE EMPLEADO ---");
 	            System.out.println("Nombre: " + buscado.getNombre());
@@ -39,13 +41,42 @@ public class MainEmpleado {
 	            System.out.println("Sueldo Neto: $" + buscado.calcularSueldoNeto());
 	        }
 	        
+	        System.out.println();
+	        
 	        Empleado buscado2 = manager.buscarPorLegajo("OP04");
 	        if (buscado2 != null) {
 	            System.out.println("--- DATOS DE EMPLEADO ---");
-	            System.out.println("Nombre: " + buscado.getNombre());
-	            System.out.println("Antigüedad: " + buscado.getAntiguedad() + " años");
-	            System.out.println("Sueldo Neto: $" + buscado.calcularSueldoNeto());
+	            System.out.println("Nombre: " + buscado2.getNombre());
+	            System.out.println("Antigüedad: " + buscado2.getAntiguedad() + " años");
+	            System.out.println("Sueldo Neto: $" + buscado2.calcularSueldoNeto());
 	        }
+	        
+	        System.out.println();
+	        
+	        Empleado buscado3 = manager.buscarPorLegajo("AB01");
+	        if (buscado3 != null) {
+	            System.out.println("--- DATOS DE EMPLEADO ---");
+	            System.out.println("Legajo: " + buscado3.getLegajo());
+	            System.out.println("Documento: " + buscado3.getDocumento());
+	            System.out.println("Nombre: " + buscado3.getNombre());
+	            System.out.println("Hijos: " + buscado3.getCantidadHijos());
+	            System.out.println("Antigüedad: " + buscado3.getAntiguedad() + " años");
+	            System.out.println("Sueldo Neto: $" + buscado3.calcularSueldoNeto());
+	        }
+	        
+	        System.out.println();
+	        
+	        Empleado buscado4 = manager.buscarPorLegajo("OP01");
+	        if (buscado4 != null) {
+	            System.out.println("--- DATOS DE EMPLEADO ---");
+	            System.out.println("Legajo: " + buscado4.getLegajo());
+	            System.out.println("Documento: " + buscado4.getDocumento());
+	            System.out.println("Nombre: " + buscado4.getNombre());
+	            System.out.println("Hijos: " + buscado4.getCantidadHijos());
+	            System.out.println("Antigüedad: " + buscado4.getAntiguedad() + " años");
+	            System.out.println("Sueldo Neto: $" + buscado4.calcularSueldoNeto());
+	        }
+	        
 
 	    }
 }
