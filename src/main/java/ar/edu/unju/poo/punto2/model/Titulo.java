@@ -8,11 +8,27 @@ public class Titulo {
 	
 	public Titulo(String nombreCarrera, String nivel, int anio) {
 		this.nombreCarrera = nombreCarrera;
-		this.nivel = nivel;
-		this.anio = anio;
+		this.setNivel(nivel);
+		this.setAnio(anio);
 	}
 	
 	public String getNombreCarrera() {
 		return nombreCarrera;
+	}
+
+	public String getNivel() {
+		return nivel;
+	}
+
+	public void setNivel(String nivel) {
+		this.nivel = nivel;
+	}
+
+	public int getAnio() {
+		return anio;
+	}
+
+	public void setAnio(int anio) {
+		this.anio = anio;
 	}
 }
