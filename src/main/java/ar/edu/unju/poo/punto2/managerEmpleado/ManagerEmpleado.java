@@ -3,7 +3,10 @@ package ar.edu.unju.poo.punto2.managerEmpleado;
 import java.util.ArrayList;
 import java.util.List;
 
+import ar.edu.unju.poo.punto2.model.Administrativo;
 import ar.edu.unju.poo.punto2.model.Empleado;
+import ar.edu.unju.poo.punto2.model.Limpieza;
+import ar.edu.unju.poo.punto2.model.Profesional;
 
 public class ManagerEmpleado {
 	private List<Empleado> listaEmpleados;
@@ -37,5 +40,28 @@ public class ManagerEmpleado {
 	
 		return listaEmpleados; 
 	
+	}
+	
+	public double calculoNetoAcumuladoPorTipo(String tipo) {
+		
+		double acumulado = 0;
+		
+		for(Empleado e : listaEmpleados) {
+			
+			boolean coincide = false;
+			
+			if (tipo.equalsIgnoreCase("Profesional") && e instanceof Profesional) 
+				coincide = true;
+			if (tipo.equalsIgnoreCase("Administrativo") && e instanceof Administrativo)
+				coincide = true;
+			if (tipo.equalsIgnoreCase("Limpieza") && e instanceof Limpieza)
+				coincide = true;
+			
+			if (coincide = true) {
+				acumulado += e.calcularSueldoNeto(); 
+			}
+		}
+		
+		return acumulado;
 	}
 }
