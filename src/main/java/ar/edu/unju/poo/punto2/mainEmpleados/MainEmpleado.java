@@ -1,6 +1,7 @@
 package ar.edu.unju.poo.punto2.mainEmpleados;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
 import ar.edu.unju.poo.punto2.managerEmpleado.ManagerEmpleado;
 import ar.edu.unju.poo.punto2.model.Administrativo;
@@ -12,6 +13,7 @@ import ar.edu.unju.poo.punto2.model.Titulo;
 public class MainEmpleado {
 	 public static void main(String[] args) {
 	        ManagerEmpleado manager = new ManagerEmpleado();
+	        Scanner scanner = new Scanner(System.in);
 
 	        // 1. Inicializar con empleados (Antigüedad simulada con fechas pasadas)
 	        Administrativo emp1 = new Administrativo("AB01", "35111222", "Carlos Jose Gómez", LocalDate.of(2020, 5, 10), 2);
@@ -77,6 +79,16 @@ public class MainEmpleado {
 	            System.out.println("Sueldo Neto: $" + buscado4.calcularSueldoNeto());
 	        }
 	        
+	        // f. Calcular el importe neto acumulado del tipo solicitado por teclado
+	      
+	        System.out.println("--- OPERACIÓN F: Consulta de masa salarial por tipo ---");
+	        System.out.println("Ingrese el tipo de empleado (Administrativo / Profesional / Limpieza): ");
+	        String tipoSolicitado = scanner.nextLine().trim();
+	        
+	        // El manager resuelve todo el cálculo matemático en una sola línea
+	        double totalNetoTipo = manager.calculoNetoAcumuladoPorTipo(tipoSolicitado);
+	        
+	        System.out.println("El importe neto acumulado total para '" + tipoSolicitado + "' es: $" + totalNetoTipo);
 
 	    }
 }
