@@ -64,4 +64,22 @@ public class ManagerEmpleado {
 		
 		return acumulado;
 	}
+	
+    // Operación 1: obtener los empleados administrativos de una categoría
+    public List<Administrativo> obtenerEmpleadosPorCategoria(char categoria) {
+        List<Administrativo> empleadosEncontrados = new ArrayList<>();
+        char categoriaBuscada = Character.toUpperCase(categoria);
+
+        for (Empleado e : listaEmpleados) {
+            if (e instanceof Administrativo) {
+                Administrativo administrativo = (Administrativo) e;
+
+                if (administrativo.getCategoria() == categoriaBuscada) {
+                    empleadosEncontrados.add(administrativo);
+                }
+            }
+        }
+
+        return empleadosEncontrados;
+    }
 }
