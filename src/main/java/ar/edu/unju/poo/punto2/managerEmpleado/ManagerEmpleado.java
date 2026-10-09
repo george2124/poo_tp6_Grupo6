@@ -57,7 +57,7 @@ public class ManagerEmpleado {
 			if (tipo.equalsIgnoreCase("Limpieza") && e instanceof Limpieza)
 				coincide = true;
 			
-			if (coincide = true) {
+			if (coincide) {
 				acumulado += e.calcularSueldoNeto(); 
 			}
 		}
