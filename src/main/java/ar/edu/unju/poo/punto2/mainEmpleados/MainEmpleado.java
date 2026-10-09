@@ -79,6 +79,22 @@ public class MainEmpleado {
 	            System.out.println("Sueldo Neto: $" + buscado4.calcularSueldoNeto());
 	        }
 	        
+	        // e. Obtener y mostrar los empleados de un categoría X
+
+		     	System.out.println();
+		     	System.out.println("--- CONSULTA DE EMPLEADOS POR CATEGORÍA ---");
+		     	System.out.print("Ingrese la categoría del empleado administrativo (A, B, C, etc.): ");
+	
+		     	String entradaCategoria = scanner.nextLine().trim();
+	
+	     	if (!entradaCategoria.isEmpty()) {
+	     		char categoria = entradaCategoria.charAt(0);
+	
+	     		manager.mostrarEmpleadosPorCategoria(categoria);
+	     	} else {
+	     		System.out.println("No ingresó ninguna categoría.");
+	     	}
+	        
 	        // f. Calcular el importe neto acumulado del tipo solicitado por teclado
 	      
 	        System.out.println("--- OPERACIÓN F: Consulta de masa salarial por tipo ---");
@@ -90,5 +106,6 @@ public class MainEmpleado {
 	        
 	        System.out.println("El importe neto acumulado total para '" + tipoSolicitado + "' es: $" + totalNetoTipo);
 
+	        scanner.close();
 	    }
 }
