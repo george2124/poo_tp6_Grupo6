@@ -82,4 +82,47 @@ public class ManagerEmpleado {
 
         return empleadosEncontrados;
     }
+    
+    // Operación 2: mostrar empleados y acumular sus importes
+    public void mostrarEmpleadosPorCategoria(char categoria) {
+        List<Administrativo> empleados =
+                obtenerEmpleadosPorCategoria(categoria);
+
+        double totalRemunerativos = 0;
+        double totalSalarioFamiliar = 0;
+        double totalDescuentos = 0;
+        double totalNeto = 0;
+
+        System.out.println("\nEmpleados de categoría "
+                + Character.toUpperCase(categoria));
+
+        if (empleados.isEmpty()) {
+            System.out.println("No se encontraron empleados de esa categoría.");
+            return;
+        }
+
+        for (Administrativo e : empleados) {
+            System.out.println("-----------------------------");
+            System.out.println("Legajo: " + e.getLegajo());
+            System.out.println("Nombre: " + e.getNombre());
+            System.out.println("Remunerativos bonificables: "
+                    + e.getRemunerativosBonificables());
+            System.out.println("Salario familiar: " + e.getSalarioFamiliar());
+            System.out.println("Descuentos: " + e.getDescuentos());
+            System.out.println("Importe neto: " + e.calcularSueldoNeto());
+
+            totalRemunerativos += e.getRemunerativosBonificables();
+            totalSalarioFamiliar += e.getSalarioFamiliar();
+            totalDescuentos += e.getDescuentos();
+            totalNeto += e.calcularSueldoNeto();
+        }
+
+        System.out.println("\n===== TOTALES ACUMULADOS =====");
+        System.out.println("Total remunerativos bonificables: "
+                + totalRemunerativos);
+        System.out.println("Total salario familiar: " + totalSalarioFamiliar);
+        System.out.println("Total descuentos: " + totalDescuentos);
+        System.out.println("Total importe neto: " + totalNeto);
+    }
+
 }
