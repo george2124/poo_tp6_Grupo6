@@ -3,7 +3,7 @@ package ar.edu.unju.poo.punto2.managerEmpleado;
 import java.util.ArrayList;
 import java.util.List;
 
-import ar.edu.unju.poo.punto2.intercafes.IManagerEmpleado;
+import ar.edu.unju.poo.punto2.interfaces.IManagerEmpleado;
 import ar.edu.unju.poo.punto2.model.Administrativo;
 import ar.edu.unju.poo.punto2.model.Empleado;
 import ar.edu.unju.poo.punto2.model.Limpieza;

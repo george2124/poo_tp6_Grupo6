@@ -1,4 +1,4 @@
-package ar.edu.unju.poo.punto2.intercafes;
+package ar.edu.unju.poo.punto2.interfaces;
 
 import java.util.List;
 
