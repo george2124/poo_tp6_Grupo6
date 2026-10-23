@@ -58,7 +58,8 @@ public abstract class Empleado {
 	}
 
 	public void setLegajo(String legajo) {
-		this.legajo = legajo;
+	    validarLegajo(legajo);
+	    this.legajo = legajo;
 	}
 
 	public String getDocumento() {
