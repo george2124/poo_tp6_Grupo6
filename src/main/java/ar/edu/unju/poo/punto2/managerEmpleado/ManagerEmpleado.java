@@ -3,12 +3,13 @@ package ar.edu.unju.poo.punto2.managerEmpleado;
 import java.util.ArrayList;
 import java.util.List;
 
+import ar.edu.unju.poo.punto2.intercafes.IManagerEmpleado;
 import ar.edu.unju.poo.punto2.model.Administrativo;
 import ar.edu.unju.poo.punto2.model.Empleado;
 import ar.edu.unju.poo.punto2.model.Limpieza;
 import ar.edu.unju.poo.punto2.model.Profesional;
 
-public class ManagerEmpleado {
+public class ManagerEmpleado implements IManagerEmpleado {
 	private List<Empleado> listaEmpleados;
 
 	public ManagerEmpleado() {
@@ -16,6 +17,102 @@ public class ManagerEmpleado {
 		this.listaEmpleados = new ArrayList<>();
 	}
 	
+	// =========================================================================
+		// OPERACIONES OBLIGATORIAS DE LA INTERFAZ (IManagerEmpleado)
+		// =========================================================================
+
+		@Override
+		public void agregar(Empleado empleado) {
+			// Reutilizamos tu lógica original de validación de legajos antes de agregar
+			for (Empleado e : listaEmpleados) {
+				if (e.getLegajo().equals(empleado.getLegajo())) {
+					System.out.println("Error: El legajo " + empleado.getLegajo() + " ya existe.");
+					return; // Corta la ejecución si ya existe
+				}
+			}
+			listaEmpleados.add(empleado);
+		}
+
+		@Override
+		public void modificar(Empleado empleado) {
+			// Buscamos el empleado existente por su legajo
+			Empleado encontrado = buscar(empleado.getLegajo());
+			if (encontrado != null) {
+				int indice = listaEmpleados.indexOf(encontrado);
+				listaEmpleados.set(indice, empleado); // Reemplaza los datos viejos por los nuevos
+				System.out.println("Empleado con legajo " + empleado.getLegajo() + " modificado con éxito.");
+			} else {
+				System.out.println("Error: No se encontró ningún empleado con el legajo " + empleado.getLegajo());
+			}
+		}
+
+		@Override
+		public Empleado buscar(String legajo) {
+			// Implementación directa utilizando tu bucle original de búsqueda
+			for (Empleado e : listaEmpleados) {
+				if (e.getLegajo().equals(legajo)) {
+					return e;
+				}
+			}
+			return null;
+		}
+
+		@Override
+		public List<Empleado> buscarTipoEmpleado(String tipo) {
+			List<Empleado> filtrados = new ArrayList<>();
+			for (Empleado e : listaEmpleados) {
+				boolean coincide = false;
+				if (tipo.equalsIgnoreCase("Profesional") && e instanceof Profesional) coincide = true;
+				if (tipo.equalsIgnoreCase("Administrativo") && e instanceof Administrativo) coincide = true;
+				if (tipo.equalsIgnoreCase("Limpieza") && e instanceof Limpieza) coincide = true;
+				
+				if (coincide) {
+					filtrados.add(e);
+				}
+			}
+			return filtrados;
+		}
+
+		@Override
+		public List<Empleado> buscarAntiguedadMayor(Integer anio) {
+			List<Empleado> filtrados = new ArrayList<>();
+			for (Empleado e : listaEmpleados) {
+				// Llama al método getAntiguedad() de tu clase Empleado
+				if (e.getAntiguedad() > anio) {
+					filtrados.add(e);
+				}
+			}
+			return filtrados;
+		}
+
+		@Override
+		public List<String> obtenerNombresOrdenados(List<Empleado> empleados) {
+			List<String> nombres = new ArrayList<>();
+			for (Empleado e : empleados) {
+				nombres.add(e.getNombre());
+			}
+			// Ordenamiento alfabético elemental (A-Z)
+			nombres.sort(String::compareTo);
+			return nombres;
+		}
+
+		@Override
+		public Double obtenerCantidad(List<Empleado> empleados) {
+			// Devuelve el tamaño de la lista que recibe como parámetro, convertido a Double
+			return (double) empleados.size();
+		}
+
+		@Override
+		public Double obtenerNetoTotalAcumulado(List<Empleado> empleados) {
+			double totalNeto = 0.0;
+			for (Empleado e : empleados) {
+				totalNeto += e.calcularSueldoNeto();
+			}
+			return totalNeto;
+		}
+
+	
+	//metodos del tp6
 	public boolean agregarEmpleado(Empleado empleado) {
 		 for (Empleado e : listaEmpleados) {
 	            if (e.getLegajo().equals(empleado.getLegajo())) {
