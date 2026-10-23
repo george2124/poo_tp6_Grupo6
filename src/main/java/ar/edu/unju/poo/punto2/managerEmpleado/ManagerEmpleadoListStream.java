@@ -1,5 +1,6 @@
 package ar.edu.unju.poo.punto2.managerEmpleado;
 
+import ar.edu.unju.poo.punto1tp8.excepciones.EmpleadoValidacionException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,6 +18,15 @@ public class ManagerEmpleadoListStream implements IManagerEmpleado {
 
     public List<Empleado> getEmpleados() {
         return empleados;
+    }
+    
+    private void validarDocumentoUnico(String documento) {
+        boolean duplicado = empleados.stream()
+                .anyMatch(emp -> emp.getDocumento().equals(documento));
+        
+        if (duplicado) {
+            throw new EmpleadoValidacionException("Error: El documento " + documento + " ya está registrado.");
+        }
     }
 
     @Override
