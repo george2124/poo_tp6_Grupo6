@@ -14,12 +14,13 @@ public abstract class Empleado {
 	public static final double SUELDO_BASICO = 400000.0;
 
 	public Empleado(String legajo, String documento, String nombre, LocalDate fechaIngreso, int cantidadHijos) {
-		super();
-		this.legajo = legajo;
-		this.documento = documento;
-		this.nombre = nombre;
-		this.fechaIngreso = fechaIngreso;
-		this.cantidadHijos = cantidadHijos;
+	    super();
+	    validarLegajo(legajo);
+	    this.legajo = legajo;
+	    this.documento = documento;
+	    this.nombre = nombre;
+	    this.fechaIngreso = fechaIngreso;
+	    this.cantidadHijos = cantidadHijos;
 	}
 	
 	// Calcula de antiguedad con la fecha actual
