@@ -1,5 +1,3 @@
-ManagerImp:
-
 package ar.edu.unju.fi.poo.interfaces.imp;
 
 import java.time.LocalTime;

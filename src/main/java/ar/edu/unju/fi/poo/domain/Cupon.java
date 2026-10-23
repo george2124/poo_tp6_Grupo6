@@ -12,6 +12,8 @@ public class Cupon {
         this.fechaVencimiento = fechaVencimiento;
         this.porcentajeDescuento = porcentajeDescuento;
     }
+    public Cupon() {
+    }
 
     public String getCodigo() { return codigo; }
     public void setCodigo(String codigo) { this.codigo = codigo; }

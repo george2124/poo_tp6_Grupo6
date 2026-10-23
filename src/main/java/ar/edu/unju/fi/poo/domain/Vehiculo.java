@@ -10,7 +10,8 @@ public class Vehiculo {
         this.marca = marca;
         this.color = color;
     }
-
+    public Vehiculo() {
+    }
     public String getPatente() { return patente; }
     public void setPatente(String patente) { this.patente = patente; }
 

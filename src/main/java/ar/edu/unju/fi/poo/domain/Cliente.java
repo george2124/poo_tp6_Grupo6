@@ -5,6 +5,8 @@ public class Cliente {
     private String dni;
     private String domicilio;
     private String celular;
+    private String nombre;
+    private String apellido;
 
     public Cliente(Integer id, String dni, String domicilio, String celular) {
         this.id = id;
@@ -12,7 +14,8 @@ public class Cliente {
         this.domicilio = domicilio;
         this.celular = celular;
     }
-
+    public Cliente() {
+    }
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
 
@@ -24,4 +27,6 @@ public class Cliente {
 
     public String getCelular() { return celular; }
     public void setCelular(String celular) { this.celular = celular; }
+    
 }
+

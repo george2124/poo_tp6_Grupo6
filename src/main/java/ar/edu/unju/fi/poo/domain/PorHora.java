@@ -10,7 +10,9 @@ public class PorHora extends RegistroIngresoSalida {
         super(id, vehiculo, hora);
         this.tarifa = tarifa;
     }
-
+    public PorHora() {
+        super(null, null, null); // O ajusta según los parámetros que pida el constructor padre
+    }
     public Double getTarifa() { 
         return tarifa; 
     }
@@ -31,3 +33,4 @@ public class PorHora extends RegistroIngresoSalida {
         return horas * tarifa;
     }
 }
+
