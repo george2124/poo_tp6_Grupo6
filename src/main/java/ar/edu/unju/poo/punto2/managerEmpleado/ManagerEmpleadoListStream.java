@@ -31,6 +31,7 @@ public class ManagerEmpleadoListStream implements IManagerEmpleado {
 
     @Override
     public void agregar(Empleado empleado) {
+        validarDocumentoUnico(empleado.getDocumento());
         empleados.add(empleado);
     }
 
