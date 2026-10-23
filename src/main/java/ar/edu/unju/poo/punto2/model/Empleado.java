@@ -96,6 +96,16 @@ public abstract class Empleado {
 		return SUELDO_BASICO;
 	}
 
+	//Método  de Validación
+    private void validarLegajo(String legajo) {
+        String anioActual = String.valueOf(LocalDate.now().getYear()).substring(2);
+
+        if (legajo == null || !legajo.matches("\\d{4}-" + anioActual)) {
+            throw new EmpleadoValidacionException(
+                "El legajo debe tener el formato NNNN-AA, con el año actual. Ejemplo: 1234-" + anioActual
+            );
+        }
+    }
     
     
 }
