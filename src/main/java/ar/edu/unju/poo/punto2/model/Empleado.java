@@ -2,6 +2,7 @@ package ar.edu.unju.poo.punto2.model;
 
 import java.time.LocalDate;
 import java.time.Period;
+import ar.edu.unju.poo.punto1tp8.excepciones.EmpleadoValidacionException;
 
 public abstract class Empleado {
 	private String legajo;
