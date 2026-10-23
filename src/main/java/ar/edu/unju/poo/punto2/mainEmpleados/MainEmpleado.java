@@ -18,15 +18,19 @@ public class MainEmpleado {
 	        // 1. Inicializar con empleados (Antigüedad simulada con fechas pasadas)
 	        Administrativo emp1 = new Administrativo("AB01", "35111222", "Carlos Jose Gómez", LocalDate.of(2020, 5, 10), 2);
 	        
-	        Profesional emp2 = new Profesional("OP01", "32444555", "Analia Rodríguez", LocalDate.of(2018, 3, 15), 3);
-	        Profesional emp4 = new Profesional("OP04", "33488566", "Camilo Mamani", LocalDate.of(2019, 2, 10), 1);
+	        Titulo titu = new Titulo("Ingeniería en Informática", "Universitario", 2015);
+	        Titulo titulo = new Titulo("Analista Programador Universitario", "Terciario", 2016);
+	        
+	        Profesional emp2 = new Profesional("OP01", "32444555", "Analia Rodríguez", LocalDate.of(2018, 3, 15), 3, titu);
+	        Profesional emp4 = new Profesional("OP04", "33488566", "Camilo Mamani", LocalDate.of(2019, 2, 10), 1, titulo);
 	        
 	        Limpieza emp3 = new Limpieza("LM01", "40888999", "Mariano Luis López", LocalDate.of(2022, 1, 20), 0);
 
-	        emp2.agregarTitulo(new Titulo("Ingeniería en Informática", "Universitario", 2015));
+	        //cambiamos esto y ponemos arriba pero dejamos los titulos agregados
+	        //emp2.agregarTitulo(new Titulo("Ingeniería en Informática", "Universitario", 2015));
 	        emp2.agregarTitulo(new Titulo("Magister en Software", "Universitario", 2017));
 	        
-	        emp4.agregarTitulo(new Titulo("Analista Programador Universitario", "Terciario", 2016));
+	        //emp4.agregarTitulo(new Titulo("Analista Programador Universitario", "Terciario", 2016));
 	        emp4.agregarTitulo(new Titulo("Licenciatura en Sistema", "Universitario", 2018));
 
 	        manager.agregarEmpleado(emp1);
