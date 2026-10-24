@@ -1,9 +1,7 @@
 package ar.edu.unju.poo.punto2.model;
-
 import java.time.LocalDate;
 import java.time.Period;
 import ar.edu.unju.poo.punto1tp8.excepciones.EmpleadoValidacionException;
-
 public abstract class Empleado {
 	private String legajo;
 	private String documento;
@@ -51,7 +49,7 @@ public abstract class Empleado {
     public double calcularSueldoNeto() {
         return getRemunerativosBonificables() + getSalarioFamiliar() - getDescuentos();
     }
-
+    
     // Getters y Setters
 	public String getLegajo() {
 		return legajo;
@@ -82,24 +80,18 @@ public abstract class Empleado {
 		return fechaIngreso;
 	}
 
-	public void setFechaIngreso(LocalDate fechaIngreso) {
-		this.fechaIngreso = fechaIngreso;
-	}
-
+	
 	public int getCantidadHijos() {
 		return cantidadHijos;
 	}
 
-	public void setCantidadHijos(int cantidadHijos) {
-		this.cantidadHijos = cantidadHijos;
-	}
-
+		
 	public static double getSueldoBasico() {
 		return SUELDO_BASICO;
 	}
 
 	//Método  de Validación
-    private void validarLegajo(String legajo) {
+    private void validarLegajo(String legajo) throws EmpleadoValidacionException {
         String anioActual = String.valueOf(LocalDate.now().getYear()).substring(2);
 
         if (legajo == null || !legajo.matches("\\d{4}-" + anioActual)) {
@@ -108,6 +100,23 @@ public abstract class Empleado {
             );
         }
     }
-    
+    // --- PUNTO C: Fecha de ingreso menor o igual a la del sistema ---
+    public void setFechaIngreso(LocalDate fechaIngreso) throws EmpleadoValidacionException {
+        if (fechaIngreso == null) {
+            throw new EmpleadoValidacionException("La fecha de ingreso no puede ser nula.");
+        }
+        if (fechaIngreso.isAfter(LocalDate.now())) {
+            throw new EmpleadoValidacionException("La fecha de ingreso debe ser menor o igual a la fecha actual del sistema.");
+        }
+        this.fechaIngreso = fechaIngreso;
+    }
+
+    // --- PUNTO D: Cantidad de hijos entre 0 y 5 ---
+    public void setCantidadHijos(int cantidadHijos) throws EmpleadoValidacionException {
+        if (cantidadHijos < 0 || cantidadHijos > 5) {
+            throw new EmpleadoValidacionException("La cantidad de hijos debe estar entre 0 y 5.");
+        }
+        this.cantidadHijos = cantidadHijos;
+    }
     
 }
