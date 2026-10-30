@@ -1,12 +1,12 @@
 package ar.edu.unju.poo.punto2.managerEmpleado;
 
-import ar.edu.unju.poo.punto1tp8.excepciones.EmpleadoValidacionException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import ar.edu.unju.poo.punto2.interfaces.IManagerEmpleado;
 import ar.edu.unju.poo.punto2.model.Empleado;
+import ar.edu.unju.poo.punto2.model.EmpleadoValidacionException;
 
 public class ManagerEmpleadoListStream implements IManagerEmpleado {
     

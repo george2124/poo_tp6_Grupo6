@@ -1,7 +1,6 @@
 package ar.edu.unju.poo.punto2.model;
 
 import java.time.LocalDate;
-import ar.edu.unju.poo.punto1tp8.excepciones.EmpleadoValidacionException;
 
 public class EmpleadoValidacionPrueba {
 

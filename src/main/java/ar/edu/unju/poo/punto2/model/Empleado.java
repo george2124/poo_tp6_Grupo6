@@ -1,7 +1,6 @@
 package ar.edu.unju.poo.punto2.model;
 import java.time.LocalDate;
 import java.time.Period;
-import ar.edu.unju.poo.punto1tp8.excepciones.EmpleadoValidacionException;
 public abstract class Empleado {
 	private String legajo;
 	private String documento;
@@ -13,7 +12,24 @@ public abstract class Empleado {
 
 	public Empleado(String legajo, String documento, String nombre, LocalDate fechaIngreso, int cantidadHijos) {
 	    super();
-	    validarLegajo(legajo);
+	    //Validación de Formato de Legajo (4 dígitos - 2 dígitos del año)--punto b
+	    if (legajo == null || !legajo.matches("\\d{4}-" +"\\d{2}")) {
+            throw new EmpleadoValidacionException("El legajo debe tener el formato NNNN-AA, con el año actual(Ejemplo: 1234-26");
+        }
+	    
+	    // Validación de Fecha de Ingreso--punto c
+	    if (fechaIngreso == null) {
+            throw new EmpleadoValidacionException("La fecha de ingreso no puede ser nula.");
+        }
+        if (fechaIngreso.isAfter(LocalDate.now())) {
+            throw new EmpleadoValidacionException("La fecha de ingreso debe ser menor o igual a la fecha actual del sistema.");
+        }
+        
+        // Validación de Cantidad de Hijos--punto d
+        if (cantidadHijos < 0 || cantidadHijos > 5) {
+            throw new EmpleadoValidacionException("La cantidad de hijos debe estar entre 0 y 5.");
+        }
+	    //validarLegajo(legajo);
 	    this.legajo = legajo;
 	    this.documento = documento;
 	    this.nombre = nombre;
@@ -56,7 +72,7 @@ public abstract class Empleado {
 	}
 
 	public void setLegajo(String legajo) {
-	    validarLegajo(legajo);
+	    //validarLegajo(legajo);
 	    this.legajo = legajo;
 	}
 
@@ -91,32 +107,17 @@ public abstract class Empleado {
 	}
 
 	//Método  de Validación
-    private void validarLegajo(String legajo) throws EmpleadoValidacionException {
-        String anioActual = String.valueOf(LocalDate.now().getYear()).substring(2);
-
-        if (legajo == null || !legajo.matches("\\d{4}-" + anioActual)) {
-            throw new EmpleadoValidacionException(
-                "El legajo debe tener el formato NNNN-AA, con el año actual. Ejemplo: 1234-" + anioActual
-            );
-        }
-    }
+    //private void validarLegajo(String legajo) throws EmpleadoValidacionException {
+      //  String anioActual = String.valueOf(LocalDate.now().getYear()).substring(2);
+    //}
     // --- PUNTO C: Fecha de ingreso menor o igual a la del sistema ---
-    public void setFechaIngreso(LocalDate fechaIngreso) throws EmpleadoValidacionException {
-        if (fechaIngreso == null) {
-            throw new EmpleadoValidacionException("La fecha de ingreso no puede ser nula.");
-        }
-        if (fechaIngreso.isAfter(LocalDate.now())) {
-            throw new EmpleadoValidacionException("La fecha de ingreso debe ser menor o igual a la fecha actual del sistema.");
-        }
-        this.fechaIngreso = fechaIngreso;
-    }
+    //public void setFechaIngreso(LocalDate fechaIngreso) throws EmpleadoValidacionException { 
+      //  this.fechaIngreso = fechaIngreso;
+    //}
 
     // --- PUNTO D: Cantidad de hijos entre 0 y 5 ---
-    public void setCantidadHijos(int cantidadHijos) throws EmpleadoValidacionException {
-        if (cantidadHijos < 0 || cantidadHijos > 5) {
-            throw new EmpleadoValidacionException("La cantidad de hijos debe estar entre 0 y 5.");
-        }
-        this.cantidadHijos = cantidadHijos;
-    }
+    //public void setCantidadHijos(int cantidadHijos) throws EmpleadoValidacionException {
+      //  this.cantidadHijos = cantidadHijos;
+    //}
     
 }

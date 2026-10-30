@@ -1,13 +1,16 @@
 package ar.edu.unju.poo.punto2.managerEmpleado;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import ar.edu.unju.poo.punto2.interfaces.IManagerEmpleado;
 import ar.edu.unju.poo.punto2.model.Administrativo;
 import ar.edu.unju.poo.punto2.model.Empleado;
+import ar.edu.unju.poo.punto2.model.EmpleadoValidacionException;
 import ar.edu.unju.poo.punto2.model.Limpieza;
 import ar.edu.unju.poo.punto2.model.Profesional;
+import ar.edu.unju.poo.punto2.model.Titulo;
 
 public class ManagerEmpleado implements IManagerEmpleado {
 	private List<Empleado> listaEmpleados;
@@ -25,14 +28,29 @@ public class ManagerEmpleado implements IManagerEmpleado {
 		public void agregar(Empleado empleado) {
 			// Reutilizamos tu lógica original de validación de legajos antes de agregar
 			for (Empleado e : listaEmpleados) {
+				
+				// Validación el documento no puede repetirse -- punto a
+				if(e.getDocumento().equals(empleado.getDocumento())) {
+					throw new EmpleadoValidacionException(" El documento " + empleado.getDocumento() + " ya existe. Por favor corregir");
+				}
+				//cambiamos la validacion de legajo, usando Exception
 				if (e.getLegajo().equals(empleado.getLegajo())) {
-					System.out.println("Error: El legajo " + empleado.getLegajo() + " ya existe.");
-					return; // Corta la ejecución si ya existe
+					throw new EmpleadoValidacionException("Error: El legajo \" + empleado.getLegajo() + \" ya existe. Por favor corregir");
 				}
 			}
 			listaEmpleados.add(empleado);
 		}
 
+		public void cargarDatos() {
+			Titulo t1 = new Titulo("Ingenieria Informatica", "Universitario", 2020);
+		    Titulo t2 = new Titulo("Analista Programador Universitario", "Terciario", 2021);
+		    
+		    this.agregar(new Profesional("1101-26", "30111222", "Analia Rodriguez", LocalDate.now().minusYears(2), 2, t1));
+		    this.agregar(new Profesional("2204-26", "30333444", "Camilo Mamani", LocalDate.now().minusYears(3), 1, t2));
+		    this.agregar(new Administrativo("3333-26", "35555666", "Rodrigo Luna", LocalDate.now().minusYears(1), 0, 'A'));
+		    this.agregar(new Limpieza("4401-26", "38888999", "Analia Lopez", LocalDate.now().minusYears(5), 3));
+		    this.agregar(new Administrativo("5555-26", "40111222", "Jose Delvalle", LocalDate.now().minusYears(4), 4, 'B'));
+		}
 		@Override
 		public void modificar(Empleado empleado) {
 			// Buscamos el empleado existente por su legajo

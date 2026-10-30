@@ -22,12 +22,12 @@ public class Profesional extends Empleado{
 	
 	public void agregarTitulo(Titulo titulo) {
 		// Obtenemos el nivel del título usando tu método getNivel()
-				String nivel = titulo.getNivel();
+		String nivel = titulo.getNivel();
 				
-				// Validamos ignorando mayúsculas/minúsculas para evitar errores de tipeo ("Universitario", "universitario")
-				if (!"universitario".equalsIgnoreCase(nivel) && !"terciario".equalsIgnoreCase(nivel)) {
-					throw new IllegalArgumentException("Debe tener al menos un titulo terceario o universitario");
-				}
+		// Validamos ignorando mayúsculas/minúsculas para evitar errores de tipeo ("Universitario", "universitario")
+		if (!"universitario".equalsIgnoreCase(nivel) && !"terciario".equalsIgnoreCase(nivel)) {
+			throw new IllegalArgumentException("Debe tener al menos un titulo terceario o universitario");
+		}
 		this.titulos.add(titulo);
 	}
 
