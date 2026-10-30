@@ -20,8 +20,8 @@ public class ManagerEmpleado implements IManagerEmpleado {
 		this.listaEmpleados = new ArrayList<>();
 	}
 	
-	// =========================================================================
-		// OPERACIONES OBLIGATORIAS DE LA INTERFAZ (IManagerEmpleado)
+		// =========================================================================
+		// OPERACIONES DE LA INTERFAZ (IManagerEmpleado)
 		// =========================================================================
 
 		@Override

@@ -29,7 +29,7 @@ public abstract class Empleado {
         if (cantidadHijos < 0 || cantidadHijos > 5) {
             throw new EmpleadoValidacionException("La cantidad de hijos debe estar entre 0 y 5.");
         }
-	    //validarLegajo(legajo);
+	    
 	    this.legajo = legajo;
 	    this.documento = documento;
 	    this.nombre = nombre;
@@ -106,18 +106,5 @@ public abstract class Empleado {
 		return SUELDO_BASICO;
 	}
 
-	//Método  de Validación
-    //private void validarLegajo(String legajo) throws EmpleadoValidacionException {
-      //  String anioActual = String.valueOf(LocalDate.now().getYear()).substring(2);
-    //}
-    // --- PUNTO C: Fecha de ingreso menor o igual a la del sistema ---
-    //public void setFechaIngreso(LocalDate fechaIngreso) throws EmpleadoValidacionException { 
-      //  this.fechaIngreso = fechaIngreso;
-    //}
-
-    // --- PUNTO D: Cantidad de hijos entre 0 y 5 ---
-    //public void setCantidadHijos(int cantidadHijos) throws EmpleadoValidacionException {
-      //  this.cantidadHijos = cantidadHijos;
-    //}
     
 }
